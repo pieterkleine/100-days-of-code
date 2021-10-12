@@ -65,11 +65,21 @@ def coin_input(drink):
     pennies = int(input("How many pennies?: "))
     return quarters, dimes, nickles, pennies
 
-def calculate_change(quarters, dimes, nickles, pennies):
-    # TODO 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
+def calculate_change(drink, quarters, dimes, nickles, pennies):
+    coin_total = quarters * .25 + dimes * .10 + nickles * .05 + pennies * .01
+    # DONE 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
     # TODO 10. If sufficient, add money to the money's resources.
     # TODO 11. Calculate change and return change (2 decimal places).
-    return
+    if coin_total >= MENU[drink]["cost"]:
+        global MONEY
+        MONEY += MENU[drink]["cost"]
+        if coin_total > MENU[drink]["cost"]:
+            change = round(coin_total - MENU[drink]["cost"], 2)
+            print(f"Here is ${change} in change.")
+        return True
+    else:
+        print("Sorry, that is not enough money. Money refunded.")
+        return False
 
 def make_drink(drink):
     # TODO 12. Make coffee: deduct recipe from resources.
@@ -77,7 +87,7 @@ def make_drink(drink):
     return  
 
 offswitch = "on"
-money = 0
+MONEY = 0
 
 while offswitch == "on":
     coffeetype = input("What coffee would you like? (espresso/latte/cappuccino): ").lower()
@@ -89,7 +99,7 @@ while offswitch == "on":
     elif coffeetype in MENU:
         if check_resources(coffeetype):
             quarters, dimes, nickles, pennies = coin_input(coffeetype)
-            calculate_change(quarters, dimes, nickles, pennies)
-            make_drink(coffeetype)        
+            if calculate_change(coffeetype, quarters, dimes, nickles, pennies):
+                make_drink(coffeetype)
     else:
         print("Invalid input")
