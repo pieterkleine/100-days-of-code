@@ -68,8 +68,8 @@ def coin_input(drink):
 def calculate_change(drink, quarters, dimes, nickles, pennies):
     coin_total = quarters * .25 + dimes * .10 + nickles * .05 + pennies * .01
     # DONE 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
-    # TODO 10. If sufficient, add money to the money's resources.
-    # TODO 11. Calculate change and return change (2 decimal places).
+    # DONE 10. If sufficient, add money to the money's resources.
+    # DONE 11. Calculate change and return change (2 decimal places).
     if coin_total >= MENU[drink]["cost"]:
         global MONEY
         MONEY += MENU[drink]["cost"]
@@ -82,9 +82,12 @@ def calculate_change(drink, quarters, dimes, nickles, pennies):
         return False
 
 def make_drink(drink):
-    # TODO 12. Make coffee: deduct recipe from resources.
-    # TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
-    return  
+    # DONE 12. Make coffee: deduct recipe from resources.
+    # DONE 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
+    resources["water"] -= MENU[drink]["ingredients"]["water"]
+    resources["milk"] -= MENU[drink]["ingredients"]["milk"]
+    resources["coffee"] -= MENU[drink]["ingredients"]["coffee"]
+    print(f"Here's your {drink} ☕. Enjoy!")
 
 offswitch = "on"
 MONEY = 0
