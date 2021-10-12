@@ -34,7 +34,6 @@ resources = {
 # TODO 2. Check input and continue
 # TODO 3. Repeat prompt once the program is terminated
 # TODO 4. Turn off the coffee machine whenever "off" is inputed.
-# TODO 5. Print report when user enters "report", which shows the coffee's resource values and money.
 # TODO 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
 # TODO 7. Prompt user to insert coins (if there are enough resources for the drink).
 # TODO 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
@@ -44,3 +43,16 @@ resources = {
 # TODO 12. Make coffee: deduct recipe from resources.
 # TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
 
+
+def print_report():
+    # TODO 5. Print report when user enters "report", which shows the coffee's resource values and money.
+
+offswitch = "on"
+
+while offswitch == "on":
+    coffeetype = input("What coffee would you like? (espresso/latte/cappuccino): ").lower()
+    if coffeetype == "off":
+        offswitch = "off"
+        break
+    elif coffeetype == "report":
+        print_report()
