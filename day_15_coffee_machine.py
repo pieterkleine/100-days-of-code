@@ -41,18 +41,15 @@ def print_report():
     water_amount = resources["water"]
     milk_amount = resources["milk"]
     coffee_amount = resources["coffee"]
-    print(f"Water: {water_amount}ml\nMilk: {milk_amount}ml\nCoffee: {coffee_amount}g\nMoney: ${money}")
+    print(f"Water: {water_amount}ml\nMilk: {milk_amount}ml\nCoffee: {coffee_amount}g\nMoney: ${MONEY}")
 
 def check_resources(drink):
-    # TODO 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
-    if MENU[drink]["ingredients"]["water"] > resources["water"]:
-        print("Sorry, there is not enough water.")
-    elif MENU[drink]["ingredients"]["milk"] > resources["milk"]:
-        print("Sorry, there is not enough milk.")
-    elif MENU[drink]["ingredients"]["coffee"] > resources["coffee"]:
-        print("Sorry, there is not enough coffee.")
-    else:
-        return True
+    # DONE 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
+    for item in MENU[drink]["ingredients"]:
+        if MENU[drink]["ingredients"][item] > resources[item]:
+            print(f"Sorry, there is not enough {item}.")
+            return False
+    return True
 
 def coin_input(drink):
     price = MENU[drink]["cost"]
@@ -84,9 +81,8 @@ def calculate_change(drink, quarters, dimes, nickles, pennies):
 def make_drink(drink):
     # DONE 12. Make coffee: deduct recipe from resources.
     # DONE 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
-    resources["water"] -= MENU[drink]["ingredients"]["water"]
-    resources["milk"] -= MENU[drink]["ingredients"]["milk"]
-    resources["coffee"] -= MENU[drink]["ingredients"]["coffee"]
+    for item in MENU[drink]["ingredients"]:
+        resources[item] -= MENU[drink]["ingredients"][item]
     print(f"Here's your {drink} ☕. Enjoy!")
 
 offswitch = "on"
