@@ -54,10 +54,16 @@ def check_resources(drink):
     else:
         return True
 
-def coin_input():
-    # TODO 7. Prompt user to insert coins (if there are enough resources for the drink).
-    # TODO 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
-    return
+def coin_input(drink):
+    price = MENU[drink]["cost"]
+    print(f"The price of a {drink} is ${price}. Please insert coins.")
+    # DONE 7. Prompt user to insert coins (if there are enough resources for the drink).
+    # DONE 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
+    quarters = int(input("How many quarters?: "))
+    dimes = int(input("How many dimes?: "))
+    nickles = int(input("How many nickles?: "))
+    pennies = int(input("How many pennies?: "))
+    return quarters, dimes, nickles, pennies
 
 def calculate_change(quarters, dimes, nickles, pennies):
     # TODO 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
@@ -82,9 +88,8 @@ while offswitch == "on":
         print_report()
     elif coffeetype in MENU:
         if check_resources(coffeetype):
-            print("Ok")
-        coin_input()
-        calculate_change(quarters, dimes, nickles, pennies)
-        make_drink(coffeetype)
+            quarters, dimes, nickles, pennies = coin_input(coffeetype)
+            calculate_change(quarters, dimes, nickles, pennies)
+            make_drink(coffeetype)        
     else:
         print("Invalid input")
