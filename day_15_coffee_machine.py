@@ -36,7 +36,7 @@ resources = {
 # DONE 4. Turn off the coffee machine whenever "off" is inputed.
 
 
-def print_report(money):
+def print_report():
     # DONE 5. Print report when user enters "report", which shows repothe coffee's resource values and money.
     water_amount = resources["water"]
     milk_amount = resources["milk"]
@@ -45,7 +45,14 @@ def print_report(money):
 
 def check_resources(drink):
     # TODO 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
-    return
+    if MENU[drink]["ingredients"]["water"] > resources["water"]:
+        print("Sorry, there is not enough water.")
+    elif MENU[drink]["ingredients"]["milk"] > resources["milk"]:
+        print("Sorry, there is not enough milk.")
+    elif MENU[drink]["ingredients"]["coffee"] > resources["coffee"]:
+        print("Sorry, there is not enough coffee.")
+    else:
+        return True
 
 def coin_input():
     # TODO 7. Prompt user to insert coins (if there are enough resources for the drink).
@@ -72,9 +79,10 @@ while offswitch == "on":
         offswitch = "off"
         break
     elif coffeetype == "report":
-        print_report(money)
+        print_report()
     elif coffeetype in MENU:
-        check_resources(coffeetype)
+        if check_resources(coffeetype):
+            print("Ok")
         coin_input()
         calculate_change(quarters, dimes, nickles, pennies)
         make_drink(coffeetype)
