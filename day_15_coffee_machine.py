@@ -36,11 +36,14 @@ resources = {
 # DONE 4. Turn off the coffee machine whenever "off" is inputed.
 
 
-def print_report():
-    # TODO 5. Print report when user enters "report", which shows the coffee's resource values and money.
-    return 
+def print_report(money):
+    # DONE 5. Print report when user enters "report", which shows repothe coffee's resource values and money.
+    water_amount = resources["water"]
+    milk_amount = resources["milk"]
+    coffee_amount = resources["coffee"]
+    print(f"Water: {water_amount}ml\nMilk: {milk_amount}ml\nCoffee: {coffee_amount}g\nMoney: ${money}")
 
-def check_resources():
+def check_resources(drink):
     # TODO 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
     return
 
@@ -49,17 +52,19 @@ def coin_input():
     # TODO 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
     return
 
-def calculate_change():
+def calculate_change(quarters, dimes, nickles, pennies):
     # TODO 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
     # TODO 10. If sufficient, add money to the money's resources.
     # TODO 11. Calculate change and return change (2 decimal places).
     return
 
-def make_drink():
+def make_drink(drink):
     # TODO 12. Make coffee: deduct recipe from resources.
-    # TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".    
+    # TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
+    return  
 
 offswitch = "on"
+money = 0
 
 while offswitch == "on":
     coffeetype = input("What coffee would you like? (espresso/latte/cappuccino): ").lower()
@@ -67,8 +72,11 @@ while offswitch == "on":
         offswitch = "off"
         break
     elif coffeetype == "report":
-        print_report()
+        print_report(money)
     elif coffeetype in MENU:
-        check_resources()
+        check_resources(coffeetype)
+        coin_input()
+        calculate_change(quarters, dimes, nickles, pennies)
+        make_drink(coffeetype)
     else:
         print("Invalid input")
