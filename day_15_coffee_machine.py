@@ -30,17 +30,10 @@ resources = {
     "coffee": 100,
 }
 
-# TODO 1. Prompt user which coffee they would like (espresso, latte, cappuccino)
-# TODO 2. Check input and continue
-# TODO 3. Repeat prompt once the program is terminated
-# TODO 4. Turn off the coffee machine whenever "off" is inputed.
-# TODO 7. Prompt user to insert coins (if there are enough resources for the drink).
-# TODO 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
-# TODO 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
-# TODO 10. If sufficient, add money to the money's resources.
-# TODO 11. Calculate change and return change (2 decimal places).
-# TODO 12. Make coffee: deduct recipe from resources.
-# TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".
+# DONE 1. Prompt user which coffee they would like (espresso, latte, cappuccino)
+# DONE 2. Check input and continue
+# DONE 3. Repeat prompt once the program is terminated
+# DONE 4. Turn off the coffee machine whenever "off" is inputed.
 
 
 def print_report():
@@ -49,7 +42,22 @@ def print_report():
 
 def check_resources():
     # TODO 6. When drink is chosen, check whether resources are suffcient to make drink. Otherwise return Sorry there is not enough x
-    return 
+    return
+
+def coin_input():
+    # TODO 7. Prompt user to insert coins (if there are enough resources for the drink).
+    # TODO 8. Coins are entered by quarter, dime, nickles, pennies and input is calculated.
+    return
+
+def calculate_change():
+    # TODO 9. If input is insufficient, return a refund with a message: "Sorry, that's not enough money. Money refunded".
+    # TODO 10. If sufficient, add money to the money's resources.
+    # TODO 11. Calculate change and return change (2 decimal places).
+    return
+
+def make_drink():
+    # TODO 12. Make coffee: deduct recipe from resources.
+    # TODO 13. Wish the customer an enjoyable experience "Here's your x. Enjoy!".    
 
 offswitch = "on"
 
